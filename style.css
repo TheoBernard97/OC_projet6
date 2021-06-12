@@ -1,0 +1,33 @@
+body {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+.start-btn {
+    display: auto;
+}
+
+.map {
+    display: flex;
+    flex-direction: row;
+    margin: 25px auto 0;
+    width: 500px;
+    height: 500px;
+    border: solid 1px black;
+}
+
+.map>div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-left: solid 1px red;
+    border-right: solid 1px red;
+}
+
+.map>div>div {
+    height: 100%;
+    border-top: solid 1px red;
+    border-bottom: solid 1px red;
+}
