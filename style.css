@@ -15,19 +15,16 @@ body {
     margin: 25px auto 0;
     width: 500px;
     height: 500px;
-    border: solid 1px black;
+    outline: solid 2px black;
 }
 
 .map>div {
     width: 100%;
     display: flex;
     flex-direction: column;
-    border-left: solid 1px red;
-    border-right: solid 1px red;
 }
 
 .map>div>div {
     height: 100%;
-    border-top: solid 1px red;
-    border-bottom: solid 1px red;
+    outline: solid 1px lightgrey;
 }
