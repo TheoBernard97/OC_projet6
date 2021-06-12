@@ -36,7 +36,6 @@ class Map {
     });
 
     const divs = document.querySelectorAll(".map>div");
-    console.log(divs);
     divs.forEach(element => {
       for (let i = 0; i < divs.length ;i++) {
         const newDiv = document.createElement("div");
