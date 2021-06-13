@@ -57,6 +57,8 @@ class Map {
     divs.forEach((element, index) => {
       for (let i = 0; i < divs.length ;i++) {
         const newDiv = document.createElement("div");
+        const idPos = index + "." + i;
+        newDiv.setAttribute("id", idPos);
         if (!area[index][i].isAccessible){
           newDiv.setAttribute("class", "rock");
         }
