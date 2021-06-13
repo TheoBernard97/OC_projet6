@@ -28,3 +28,7 @@ body {
     height: 100%;
     outline: solid 1px lightgrey;
 }
+
+.rock{
+    background-color: #454545
+}

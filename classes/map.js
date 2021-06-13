@@ -1,15 +1,20 @@
 class Map {
-  constructor(mapSize) {
+  constructor(mapSize, nomberOfRocks) {
+    this.area = [];
     this.size = mapSize;
+    this.rocks = nomberOfRocks;
+    this.rocksPos = [];
   }
 
   init = () =>{
-    this.createArea(this.size);
+    this.createArea(this.size, this.area);
+    this.addRocks(this.area, this.rocks);
+    this.displayArea(this.area);
+    console.log(this.area);
   }
 
-  createArea (size) {
+  createArea (size, area) {
     console.log("Create a map with " + size * size + " cases");
-    const area = [];
     for (let i = 0; i < size; i++){
       area.push([]);
       for (let j = 0; j < size; j++){
@@ -23,11 +28,23 @@ class Map {
         });
       }
     }
-    this.displayArea(area);
+  }
+    
+  addRocks (area, rocks) {
+    for (let i = 0; i < rocks ;i++) {
+      const randomX = Math.floor(Math.random() * area.length) + 1; 
+      const randomY = Math.floor(Math.random() * area.length) + 1;
+      if (area[randomX - 1][randomY -1].isAccessible) {
+        area[randomX - 1][randomY -1].isAccessible = false;
+        this.rocksPos.push({ x : randomX - 1, y : randomY - 1});
+      }
+      else {
+        i--;
+      }
+    }
   }
 
   displayArea (area) {
-    console.log(area);
     const map = document.querySelector(".map");
 
     area.forEach(element => {
@@ -36,9 +53,13 @@ class Map {
     });
 
     const divs = document.querySelectorAll(".map>div");
-    divs.forEach(element => {
+
+    divs.forEach((element, index) => {
       for (let i = 0; i < divs.length ;i++) {
         const newDiv = document.createElement("div");
+        if (!area[index][i].isAccessible){
+          newDiv.setAttribute("class", "rock");
+        }
         element.appendChild(newDiv);
       }
     });
