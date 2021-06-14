@@ -29,6 +29,10 @@ body {
     outline: solid 1px lightgrey;
 }
 
-.rock{
+.rock {
     background-color: #454545
+}
+
+.weapon {
+    background-color: lightcoral;
 }
