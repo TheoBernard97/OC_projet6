@@ -76,7 +76,7 @@ class Map {
       for (let i = 0; i < divs.length ;i++) {
         const newDiv = document.createElement("div");
         const idPos = index + "." + i;
-        newDiv.setAttribute("id", idPos);
+        newDiv.setAttribute("data-id", idPos);
         if (area[index][i].entityOnTheCase === "rock"){
           newDiv.setAttribute("class", "rock");
         }
