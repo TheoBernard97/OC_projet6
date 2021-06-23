@@ -4,6 +4,7 @@ class Player {
         this.color;
         this.health = 100;
         this.mobility = 3;
+        this.coordinates = undefined;
     }
 }
 
