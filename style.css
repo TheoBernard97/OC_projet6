@@ -33,6 +33,18 @@ body {
     background-color: #454545
 }
 
-.weapon {
-    background-color: lightcoral;
+.weapon1 {
+    background-color: #ffc100;
+}
+
+.weapon2 {
+    background-color: #ff9800;
+}
+
+.weapon3 {
+    background-color: #ff5607;
+}
+
+.weapon4 {
+    background-color: #f6412d;
 }

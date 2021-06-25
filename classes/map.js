@@ -1,3 +1,6 @@
+import Weapon from "./weapon.js";
+import Weapons from "../assets/weapons.js";
+
 class Map {
   constructor(mapSize, nomberOfRocks, nomberOfWeapons) {
     this.area = [];
@@ -6,12 +9,17 @@ class Map {
     this.rocksPos = [];
     this.weapons = nomberOfWeapons;
     this.weaponsPos = [];
+
+    this.weapon = new Weapon(Weapons);
   }
 
   init = () => {
     this.createArea(this.size, this.area);
     this.addRocks(this.area, this.rocks);
-    this.addWeapons(this.area, this.weapons);
+    const Swords = this.weapon.createWeapons(Weapons);
+    this.addWeapons(this.area, Swords);
+    // this.createPlayers();
+    // this.addPlayers();
     this.displayArea(this.area);
     console.log(this.area);
   }
@@ -49,11 +57,11 @@ class Map {
   }
 
   addWeapons (area, weapons) {
-    for (let i = 0; i < weapons; i++) {
+    for (let i = 0; i < weapons.length; i++) {
       const randomX = Math.floor(Math.random() * area.length) + 1; 
       const randomY = Math.floor(Math.random() * area.length) + 1;
       if (!area[randomX - 1][randomY -1].entityOnTheCase) {
-        area[randomX - 1][randomY -1].entityOnTheCase = "weapon";
+        area[randomX - 1][randomY -1].entityOnTheCase = weapons[i];
         this.weaponsPos.push({ x : randomX - 1, y : randomY - 1});
       }
       else {
@@ -80,8 +88,9 @@ class Map {
         if (area[index][i].entityOnTheCase === "rock"){
           newDiv.setAttribute("class", "rock");
         }
-        else if (area[index][i].entityOnTheCase === "weapon"){
-          newDiv.setAttribute("class", "weapon");
+        else if (area[index][i].entityOnTheCase instanceof Weapon){
+          const cssClass = "weapon" + area[index][i].entityOnTheCase.weaponId;
+          newDiv.setAttribute("class", cssClass);
         }
         element.appendChild(newDiv);
       }
