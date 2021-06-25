@@ -1,15 +1,15 @@
 import Weapon from "./weapon.js";
 import Weapons from "../assets/weapons.js";
+import Player from "./player.js";
 
 class Map {
-  constructor(mapSize, nomberOfRocks, nomberOfWeapons) {
+  constructor(mapSize, nomberOfRocks) {
     this.area = [];
     this.size = mapSize;
     this.rocks = nomberOfRocks;
     this.rocksPos = [];
-    this.weapons = nomberOfWeapons;
-    this.weaponsPos = [];
 
+    this.player = new Player();
     this.weapon = new Weapon(Weapons);
   }
 
@@ -18,8 +18,8 @@ class Map {
     this.addRocks(this.area, this.rocks);
     const Swords = this.weapon.createWeapons(Weapons);
     this.addWeapons(this.area, Swords);
-    // this.createPlayers();
-    // this.addPlayers();
+    const Players = this.player.createPlayers();
+    this.addPlayers(this.area, Players);
     this.displayArea(this.area);
     console.log(this.area);
   }
@@ -62,7 +62,19 @@ class Map {
       const randomY = Math.floor(Math.random() * area.length) + 1;
       if (!area[randomX - 1][randomY -1].entityOnTheCase) {
         area[randomX - 1][randomY -1].entityOnTheCase = weapons[i];
-        this.weaponsPos.push({ x : randomX - 1, y : randomY - 1});
+      }
+      else {
+        i--;
+      }
+    }
+  }
+
+  addPlayers(area, players) {
+    for (let i = 0; i < players.length; i++) {
+      const randomX = Math.floor(Math.random() * area.length) + 1; 
+      const randomY = Math.floor(Math.random() * area.length) + 1;
+      if (!area[randomX - 1][randomY -1].entityOnTheCase) {
+        area[randomX - 1][randomY -1].entityOnTheCase = players[i];
       }
       else {
         i--;
@@ -90,6 +102,10 @@ class Map {
         }
         else if (area[index][i].entityOnTheCase instanceof Weapon){
           const cssClass = "weapon" + area[index][i].entityOnTheCase.weaponId;
+          newDiv.setAttribute("class", cssClass);
+        }
+        else if (area[index][i].entityOnTheCase instanceof Player){
+          const cssClass = "player" + area[index][i].entityOnTheCase.id;
           newDiv.setAttribute("class", cssClass);
         }
         element.appendChild(newDiv);

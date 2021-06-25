@@ -4,9 +4,10 @@ class Game {
     constructor() {
         const mapSize = 10;
         const numberOfRocks = 10;
-        const numberOfWeapons = 4;
+        // 4 Weapons
+        // 2 Players
 
-        this.map = new Map(mapSize, numberOfRocks, numberOfWeapons);
+        this.map = new Map(mapSize, numberOfRocks);
     }
 
     init (){

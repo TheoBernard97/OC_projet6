@@ -48,3 +48,11 @@ body {
 .weapon4 {
     background-color: #f6412d;
 }
+
+.player1 {
+    background-color: blue;
+}
+
+.player2 {
+    background-color: green;
+}
