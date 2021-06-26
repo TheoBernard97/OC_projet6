@@ -3,7 +3,7 @@ import Map from "./map.js";
 class Game {
     constructor() {
         const mapSize = 10;
-        const numberOfRocks = 10;
+        const numberOfRocks = 15;
         // 4 Weapons
         // 2 Players
 
