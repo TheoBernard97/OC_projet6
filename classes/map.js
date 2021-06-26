@@ -74,6 +74,7 @@ class Map {
       const randomX = Math.floor(Math.random() * area.length) + 1; 
       const randomY = Math.floor(Math.random() * area.length) + 1;
       if (!area[randomX - 1][randomY -1].entityOnTheCase) {
+        area[randomX - 1][randomY -1].isAccessible = false;
         area[randomX - 1][randomY -1].entityOnTheCase = players[i];
       }
       else {
@@ -111,6 +112,9 @@ class Map {
         element.appendChild(newDiv);
       }
     });
+
+    const gameboard = document.querySelector(".gameboard");
+    gameboard.style.display = "block";
   }
 }
 

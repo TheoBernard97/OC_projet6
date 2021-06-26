@@ -9,6 +9,10 @@ body {
     display: auto;
 }
 
+.gameboard {
+    display: none;
+}
+
 .map {
     display: flex;
     flex-direction: row;
@@ -34,25 +38,43 @@ body {
 }
 
 .weapon1 {
-    background-color: #ffc100;
+    background-image: url("./assets/sword1.png");
+    background-size: 50% 50%;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .weapon2 {
-    background-color: #ff9800;
+    background-image: url("./assets/sword2.png");
+    background-size: 50% 50%;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .weapon3 {
-    background-color: #ff5607;
+    background-image: url("./assets/sword3.png");
+    background-size: 50% 50%;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .weapon4 {
-    background-color: #f6412d;
+    background-image: url("./assets/sword4.png");
+    background-size: 50% 50%;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .player1 {
-    background-color: blue;
+    background-image: url("./assets/player1.png");
+    background-size: 75% 75%;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .player2 {
-    background-color: green;
+    background-image: url("./assets/player2.png");
+    background-size: 75% 75%;
+    background-repeat: no-repeat;
+    background-position: center;
 }
