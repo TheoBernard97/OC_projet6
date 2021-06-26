@@ -14,12 +14,19 @@ class Map {
   }
 
   init = () => {
+    console.log("1. Create area");
     this.createArea(this.size, this.area);
+    console.log("2. Add rocks");
     this.addRocks(this.area, this.rocks);
+    console.log("3. Create weapons");
     const Swords = this.weapon.createWeapons(Weapons);
+    console.log("4. Add weapons");
     this.addWeapons(this.area, Swords);
+    console.log("5. Create players");
     const Players = this.player.createPlayers();
+    console.log("6. Add players");
     this.addPlayers(this.area, Players);
+    console.log("7. Display area");
     this.displayArea(this.area);
     console.log(this.area);
   }
@@ -35,7 +42,7 @@ class Map {
             x : i + 1, 
             y : j + 1
           },
-          entityOnTheCase : null
+          entityOnTheCase : []
         });
       }
     }
@@ -45,9 +52,9 @@ class Map {
     for (let i = 0; i < rocks; i++) {
       const randomX = Math.floor(Math.random() * area.length) + 1; 
       const randomY = Math.floor(Math.random() * area.length) + 1;
-      if (!area[randomX - 1][randomY -1].entityOnTheCase) {
+      if (area[randomX - 1][randomY -1].entityOnTheCase.length == 0) {
         area[randomX - 1][randomY -1].isAccessible = false;
-        area[randomX - 1][randomY -1].entityOnTheCase = "rock";
+        area[randomX - 1][randomY -1].entityOnTheCase.push("rock");
         this.rocksPos.push({ x : randomX - 1, y : randomY - 1});
       }
       else {
@@ -60,8 +67,8 @@ class Map {
     for (let i = 0; i < weapons.length; i++) {
       const randomX = Math.floor(Math.random() * area.length) + 1; 
       const randomY = Math.floor(Math.random() * area.length) + 1;
-      if (!area[randomX - 1][randomY -1].entityOnTheCase) {
-        area[randomX - 1][randomY -1].entityOnTheCase = weapons[i];
+      if (area[randomX - 1][randomY -1].entityOnTheCase.length == 0) {
+        area[randomX - 1][randomY -1].entityOnTheCase.push(weapons[i]);
       }
       else {
         i--;
@@ -73,9 +80,9 @@ class Map {
     for (let i = 0; i < players.length; i++) {
       const randomX = Math.floor(Math.random() * area.length) + 1; 
       const randomY = Math.floor(Math.random() * area.length) + 1;
-      if (!area[randomX - 1][randomY -1].entityOnTheCase) {
+      if (area[randomX - 1][randomY -1].entityOnTheCase.length == 0) {
         area[randomX - 1][randomY -1].isAccessible = false;
-        area[randomX - 1][randomY -1].entityOnTheCase = players[i];
+        area[randomX - 1][randomY -1].entityOnTheCase.push(players[i]);
       }
       else {
         i--;
@@ -98,15 +105,15 @@ class Map {
         const newDiv = document.createElement("div");
         const idPos = index + "." + i;
         newDiv.setAttribute("data-id", idPos);
-        if (area[index][i].entityOnTheCase === "rock"){
+        if (area[index][i].entityOnTheCase.some((entity) => entity === "rock")){
           newDiv.setAttribute("class", "rock");
         }
-        else if (area[index][i].entityOnTheCase instanceof Weapon){
-          const cssClass = "weapon" + area[index][i].entityOnTheCase.weaponId;
+        else if (area[index][i].entityOnTheCase.some((entity) => entity instanceof Player)){
+          const cssClass = "player" + area[index][i].entityOnTheCase.find((entity) => entity instanceof Player).id;
           newDiv.setAttribute("class", cssClass);
         }
-        else if (area[index][i].entityOnTheCase instanceof Player){
-          const cssClass = "player" + area[index][i].entityOnTheCase.id;
+        else if (area[index][i].entityOnTheCase.some((entity) => entity instanceof Weapon)){
+          const cssClass = "weapon" + area[index][i].entityOnTheCase.find((entity) => entity instanceof Weapon).weaponId;
           newDiv.setAttribute("class", cssClass);
         }
         element.appendChild(newDiv);
