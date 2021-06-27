@@ -39,8 +39,8 @@ class Map {
         area[i].push({
           isAccessible : true,
           coordinates : {
-            x : i + 1, 
-            y : j + 1
+            x : i, 
+            y : j
           },
           entityOnTheCase : []
         });
@@ -50,12 +50,12 @@ class Map {
     
   addRocks (area, rocks) {
     for (let i = 0; i < rocks; i++) {
-      const randomX = Math.floor(Math.random() * area.length) + 1; 
-      const randomY = Math.floor(Math.random() * area.length) + 1;
-      if (area[randomX - 1][randomY -1].entityOnTheCase.length == 0) {
-        area[randomX - 1][randomY -1].isAccessible = false;
-        area[randomX - 1][randomY -1].entityOnTheCase.push("rock");
-        this.rocksPos.push({ x : randomX - 1, y : randomY - 1});
+      const randomX = Math.floor(Math.random() * area.length); 
+      const randomY = Math.floor(Math.random() * area.length);
+      if (area[randomX][randomY].entityOnTheCase.length == 0) {
+        area[randomX][randomY].isAccessible = false;
+        area[randomX][randomY].entityOnTheCase.push("rock");
+        this.rocksPos.push({ x : randomX, y : randomY});
       }
       else {
         i--;
@@ -65,10 +65,10 @@ class Map {
 
   addWeapons (area, weapons) {
     for (let i = 0; i < weapons.length; i++) {
-      const randomX = Math.floor(Math.random() * area.length) + 1; 
-      const randomY = Math.floor(Math.random() * area.length) + 1;
-      if (area[randomX - 1][randomY -1].entityOnTheCase.length == 0) {
-        area[randomX - 1][randomY -1].entityOnTheCase.push(weapons[i]);
+      const randomX = Math.floor(Math.random() * area.length); 
+      const randomY = Math.floor(Math.random() * area.length);
+      if (area[randomX][randomY].entityOnTheCase.length == 0) {
+        area[randomX][randomY].entityOnTheCase.push(weapons[i]);
       }
       else {
         i--;
@@ -78,16 +78,56 @@ class Map {
 
   addPlayers(area, players) {
     for (let i = 0; i < players.length; i++) {
-      const randomX = Math.floor(Math.random() * area.length) + 1; 
-      const randomY = Math.floor(Math.random() * area.length) + 1;
-      if (area[randomX - 1][randomY -1].entityOnTheCase.length == 0) {
-        area[randomX - 1][randomY -1].isAccessible = false;
-        area[randomX - 1][randomY -1].entityOnTheCase.push(players[i]);
+      const randomX = Math.floor(Math.random() * area.length); 
+      const randomY = Math.floor(Math.random() * area.length);
+      const randomPos = area[randomX][randomY];
+      console.log("randomX: ", randomX);
+      console.log("randomY: ", randomY);
+      console.log("randomPos: ", randomPos);
+      if (randomPos.entityOnTheCase.length == 0) {
+        // const playerIsClose = checkIfPlayerIsClose(area, randomX, randomY);
+        // console.log("playerIsClose: ", playerIsClose);
+        // if (playerIsClose) {
+        //   i--;
+        // }
+        // else {
+          randomPos.isAccessible = false;
+          randomPos.entityOnTheCase.push(players[i]);
+        // }
       }
       else {
         i--;
       }
     }
+  }
+
+  // Check if the case exist then check if their is a player in the case
+  checkIfPlayerIsClose (area, xPos, yPos) {
+    console.log("area[randomX + 1][randomY] : ", area[xPos + 1][yPos])
+    console.log("area[randomX -1 ][randomY] : ", area[xPos - 1][yPos]);
+    console.log("area[randomX][randomY + 1] : ", area[xPos][yPos + 1]);
+    console.log("area[randomX][randomY - 1] : ", area[xPos][yPos - 1]);
+    if (area[xPos + 1][yPos]){
+      if (area[xPos + 1][yPos].entityOnTheCase.some((entity) => entity instanceof Player)){
+        return true;
+      }
+    }
+    if (area[xPos - 1][yPos]) {
+      if (area[xPos - 1][yPos].entityOnTheCase.some((entity) => entity instanceof Player)){
+        return true;
+      }
+    }
+    if (area[xPos][yPos - 1]) {
+      if (area[xPos][yPos - 1].entityOnTheCase.some((entity) => entity instanceof Player)){
+        return true;
+      }
+    }
+    if (area[xPos][yPos + 1]) {
+      if (area[xPos][yPos + 1].entityOnTheCase.some((entity) => entity instanceof Player)){
+        return true;
+      }
+    }
+    return false;
   }
 
   displayArea (area) {
