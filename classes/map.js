@@ -100,25 +100,21 @@ class Map {
   
   checkIfPlayerIsClose (area, xPos, yPos) {
     if (xPos - 1 >= 0){
-      // Check xPos - 1
       if (area[xPos - 1][yPos].entityOnTheCase.some((entity) => entity instanceof Player)){
         return true;
       }
     }
     if (xPos + 1 < area.length){
-      // Check xPos + 1 
       if (area[xPos + 1][yPos].entityOnTheCase.some((entity) => entity instanceof Player)){
         return true;
       }
     }
     if (yPos - 1 >= 0){
-      // Check yPos - 1 
       if (area[xPos][yPos - 1].entityOnTheCase.some((entity) => entity instanceof Player)){
         return true;
       }
     }
     if (yPos + 1 < area.length){
-      // Check yPos + 1 
       if (area[xPos][yPos + 1].entityOnTheCase.some((entity) => entity instanceof Player)){
         return true;
       }
