@@ -81,19 +81,15 @@ class Map {
       const randomX = Math.floor(Math.random() * area.length); 
       const randomY = Math.floor(Math.random() * area.length);
       const randomPos = area[randomX][randomY];
-      console.log("randomX: ", randomX);
-      console.log("randomY: ", randomY);
-      console.log("randomPos: ", randomPos);
       if (randomPos.entityOnTheCase.length == 0) {
-        // const playerIsClose = checkIfPlayerIsClose(area, randomX, randomY);
-        // console.log("playerIsClose: ", playerIsClose);
-        // if (playerIsClose) {
-        //   i--;
-        // }
-        // else {
+        const playerIsClose = this.checkIfPlayerIsClose(area, randomX, randomY);
+        if (playerIsClose == true) {
+          i--;
+        }
+        else {
           randomPos.isAccessible = false;
           randomPos.entityOnTheCase.push(players[i]);
-        // }
+        }
       }
       else {
         i--;
@@ -101,28 +97,28 @@ class Map {
     }
   }
 
-  // Check if the case exist then check if their is a player in the case
+  
   checkIfPlayerIsClose (area, xPos, yPos) {
-    console.log("area[randomX + 1][randomY] : ", area[xPos + 1][yPos])
-    console.log("area[randomX -1 ][randomY] : ", area[xPos - 1][yPos]);
-    console.log("area[randomX][randomY + 1] : ", area[xPos][yPos + 1]);
-    console.log("area[randomX][randomY - 1] : ", area[xPos][yPos - 1]);
-    if (area[xPos + 1][yPos]){
-      if (area[xPos + 1][yPos].entityOnTheCase.some((entity) => entity instanceof Player)){
-        return true;
-      }
-    }
-    if (area[xPos - 1][yPos]) {
+    if (xPos - 1 >= 0){
+      // Check xPos - 1
       if (area[xPos - 1][yPos].entityOnTheCase.some((entity) => entity instanceof Player)){
         return true;
       }
     }
-    if (area[xPos][yPos - 1]) {
+    if (xPos + 1 < area.length){
+      // Check xPos + 1 
+      if (area[xPos + 1][yPos].entityOnTheCase.some((entity) => entity instanceof Player)){
+        return true;
+      }
+    }
+    if (yPos - 1 >= 0){
+      // Check yPos - 1 
       if (area[xPos][yPos - 1].entityOnTheCase.some((entity) => entity instanceof Player)){
         return true;
       }
     }
-    if (area[xPos][yPos + 1]) {
+    if (yPos + 1 < area.length){
+      // Check yPos + 1 
       if (area[xPos][yPos + 1].entityOnTheCase.some((entity) => entity instanceof Player)){
         return true;
       }
