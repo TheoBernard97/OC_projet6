@@ -14,19 +14,19 @@ class Map {
   }
 
   init = () => {
-    console.log("1. Create area");
+    // console.log("1. Create area");
     this.createArea(this.size, this.area);
-    console.log("2. Add rocks");
+    // console.log("2. Add rocks");
     this.addRocks(this.area, this.rocks);
-    console.log("3. Create weapons");
+    // console.log("3. Create weapons");
     const Swords = this.weapon.createWeapons(Weapons);
-    console.log("4. Add weapons");
+    // console.log("4. Add weapons");
     this.addWeapons(this.area, Swords);
-    console.log("5. Create players");
+    // console.log("5. Create players");
     const Players = this.player.createPlayers();
-    console.log("6. Add players");
+    // console.log("6. Add players");
     this.addPlayers(this.area, Players);
-    console.log("7. Display area");
+    // console.log("7. Display area");
     this.displayArea(this.area);
     console.log(this.area);
   }
