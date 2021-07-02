@@ -34,7 +34,7 @@ body {
 }
 
 .reachable-cell {
-    background-color: lightskyblue;
+    background-color: grey;
     cursor: pointer;
 }
 
