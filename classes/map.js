@@ -165,8 +165,6 @@ class Map {
 
     const xPos = player.coordinates.x;
     const yPos = player.coordinates.y;
-    console.log("xPos: ", xPos);
-    console.log("yPos: ", yPos);
     
     //Check left cell
     for(let i = 1; i <= player.mobility; i++){

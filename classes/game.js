@@ -16,9 +16,17 @@ class Game {
     }
 
     init (){
+        this.setupEventListener();
         console.log("Game start");
         this.map.init();
         this.researchPhase();
+    }
+
+    setupEventListener() {
+        document.addEventListener("click", event => {
+            if (!event.target.classList.contains('reachable-cell')) return;
+            console.log(event.srcElement.attributes[0].value);
+          });
     }
 
     researchPhase () {
