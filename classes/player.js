@@ -1,6 +1,10 @@
 class Player {
     constructor(id) {
         this.id = id;
+        this.coordinates = {
+            x: null,
+            y: null
+        };
         this.power = 10;
         this.health = 100;
         this.mobility = 3;

@@ -9,6 +9,9 @@ class Map {
     this.rocks = nomberOfRocks;
     this.rocksPos = [];
 
+    this.Swords = [];
+    this.Player = [];
+
     this.player = new Player();
     this.weapon = new Weapon(Weapons);
   }
@@ -19,13 +22,13 @@ class Map {
     // console.log("2. Add rocks");
     this.addRocks(this.area, this.rocks);
     // console.log("3. Create weapons");
-    const Swords = this.weapon.createWeapons(Weapons);
+    this.Swords = this.weapon.createWeapons(Weapons);
     // console.log("4. Add weapons");
-    this.addWeapons(this.area, Swords);
+    this.addWeapons(this.area, this.Swords);
     // console.log("5. Create players");
-    const Players = this.player.createPlayers();
+    this.Players = this.player.createPlayers();
     // console.log("6. Add players");
-    this.addPlayers(this.area, Players);
+    this.addPlayers(this.area, this.Players);
     // console.log("7. Display area");
     this.displayArea(this.area);
     console.log(this.area);
@@ -47,7 +50,7 @@ class Map {
       }
     }
   }
-    
+
   addRocks (area, rocks) {
     for (let i = 0; i < rocks; i++) {
       const randomX = Math.floor(Math.random() * area.length); 
@@ -89,6 +92,8 @@ class Map {
         else {
           randomPos.isAccessible = false;
           randomPos.entityOnTheCase.push(players[i]);
+          players[i].coordinates.x = randomX;
+          players[i].coordinates.y = randomY;
         }
       }
       else {
@@ -97,7 +102,6 @@ class Map {
     }
   }
 
-  
   checkIfPlayerIsClose (area, xPos, yPos) {
     if (xPos - 1 >= 0){
       if (area[xPos - 1][yPos].entityOnTheCase.some((entity) => entity instanceof Player)){
@@ -154,6 +158,71 @@ class Map {
 
     const gameboard = document.querySelector(".gameboard");
     gameboard.style.display = "block";
+  }
+
+  displyReachableCases(area, player) {
+    console.log("Player: ", player.coordinates);
+
+    const xPos = player.coordinates.x;
+    const yPos = player.coordinates.y;
+    console.log("xPos: ", xPos);
+    console.log("yPos: ", yPos);
+    
+    //Check left cell
+    for(let i = 1; i <= player.mobility; i++){
+      if (yPos - i >= 0){
+        if (area[xPos][yPos - i].isAccessible){
+          const dataID = xPos + "." + (yPos - i);
+          const cell = document.querySelector("[data-id|='" + dataID + "']");
+          cell.setAttribute("class", "reachable-cell");
+        }
+        else {
+          i = player.mobility + 1;
+        }
+      }
+    }
+
+    //Check top cell
+    for(let i = 1; i <= player.mobility; i++){
+      if (xPos - i >= 0){
+        if (area[xPos - i][yPos].isAccessible){
+          const dataID = (xPos - i) + "." + yPos;
+          const cell = document.querySelector("[data-id|='" + dataID + "']");
+          cell.setAttribute("class", "reachable-cell");
+        }
+        else {
+          i = player.mobility + 1;
+        }
+      }
+    }
+    
+    //Check right cell
+    for(let i = 1; i <= player.mobility; i++){
+      if (xPos + i < area.length){
+        if (area[xPos + i][yPos].isAccessible){
+          const dataID = (xPos + i) + "." + yPos;
+          const cell = document.querySelector("[data-id|='" + dataID + "']");
+          cell.setAttribute("class", "reachable-cell");
+        }
+        else {
+          i = player.mobility + 1;
+        }
+      }
+    }
+
+    //Check bottom cell
+    for(let i = 1; i <= player.mobility; i++){
+      if (yPos + i < area.length){
+        if (area[xPos][yPos + i].isAccessible){
+          const dataID = xPos + "." + (yPos + i);
+          const cell = document.querySelector("[data-id|='" + dataID + "']");
+          cell.setAttribute("class", "reachable-cell");
+        }
+        else {
+          i = player.mobility + 1;
+        }
+      }
+    }
   }
 }
 

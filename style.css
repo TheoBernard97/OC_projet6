@@ -81,3 +81,8 @@ body {
     background-repeat: no-repeat;
     background-position: center;
 }
+
+.reachable-cell {
+    background-color: lightskyblue;
+    cursor: pointer;
+}
