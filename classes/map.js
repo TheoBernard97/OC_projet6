@@ -149,8 +149,8 @@ class Map {
           newDiv.setAttribute("class", cssClass);
         }
         else if (area[index][i].entityOnTheCase.some((entity) => entity instanceof Weapon)){
-          const cssClass = "weapon" + area[index][i].entityOnTheCase.find((entity) => entity instanceof Weapon).weaponId;
-          newDiv.setAttribute("class", cssClass);
+          const cssID = "weapon" + area[index][i].entityOnTheCase.find((entity) => entity instanceof Weapon).weaponId;
+          newDiv.setAttribute("id", cssID);
         }
         element.appendChild(newDiv);
       }

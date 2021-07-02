@@ -33,6 +33,11 @@ body {
     outline: solid 1px lightgrey;
 }
 
+.reachable-cell {
+    background-color: lightskyblue;
+    cursor: pointer;
+}
+
 .rock {
     background-image: url("./assets/rock.png");
     background-size: 90% 90%;
@@ -40,28 +45,28 @@ body {
     background-position: center;
 }
 
-.weapon1 {
+#weapon1 {
     background-image: url("./assets/sword1.png");
     background-size: 50% 50%;
     background-repeat: no-repeat;
     background-position: center;
 }
 
-.weapon2 {
+#weapon2 {
     background-image: url("./assets/sword2.png");
     background-size: 50% 50%;
     background-repeat: no-repeat;
     background-position: center;
 }
 
-.weapon3 {
+#weapon3 {
     background-image: url("./assets/sword3.png");
     background-size: 50% 50%;
     background-repeat: no-repeat;
     background-position: center;
 }
 
-.weapon4 {
+#weapon4 {
     background-image: url("./assets/sword4.png");
     background-size: 50% 50%;
     background-repeat: no-repeat;
@@ -80,9 +85,4 @@ body {
     background-size: 75% 75%;
     background-repeat: no-repeat;
     background-position: center;
-}
-
-.reachable-cell {
-    background-color: lightskyblue;
-    cursor: pointer;
 }
