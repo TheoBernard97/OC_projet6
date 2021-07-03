@@ -5,7 +5,25 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+img {
+    margin-top: 25px;
+    height: 100px;
+}
+
 .start-btn {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 0.25rem 0.5rem;
     display: auto;
 }
 
@@ -13,10 +31,23 @@ body {
     display: none;
 }
 
+.players {
+    margin: 20px auto 0;
+    width: 500px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.players p {
+    font-weight: bold;
+    margin: 0;
+}
+
 .map {
     display: flex;
     flex-direction: row;
-    margin: 25px auto 0;
+    margin: 20px auto 0;
     width: 500px;
     height: 500px;
     outline: solid 2px black;

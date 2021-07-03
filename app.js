@@ -4,6 +4,6 @@ let game = new Game();
 
 const start = document.querySelector(".start-btn");
 start.addEventListener("click", () => {
-    start.setAttribute("disabled" ,"true");
+    start.style.display = "none";
     game.init();
 });
