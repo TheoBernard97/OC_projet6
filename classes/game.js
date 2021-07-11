@@ -36,6 +36,7 @@ class Game {
         // Show reachables cases
         this.map.displyReachableCases(this.map.area, this.map.Players[this.playerTurn - 1]);
         // Wait for a click
+        
         // Move the player on each case between the selected one 
         // Get a weapon if the player walk on one or exchange weapons if he already have one
         // Check if the player is close to the other player

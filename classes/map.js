@@ -161,8 +161,6 @@ class Map {
   }
 
   displyReachableCases(area, player) {
-    console.log("Player: ", player.coordinates);
-
     const xPos = player.coordinates.x;
     const yPos = player.coordinates.y;
     
