@@ -14,8 +14,21 @@ class Player {
         return this.health;
     }
 
-    setHealth (newValue) {
-        return this.health = newValue;
+    setHealth (newHealth) {
+        return this.health = newHealth;
+    }
+
+    getCoordinates () {
+        return this.coordinates;
+    }
+
+    setCoordinates (newCoordinates) {
+        const arrayCoordinates = newCoordinates.split(".");
+        const coordinates = {
+            x : parseInt(arrayCoordinates[0], 10),
+            y : parseInt(arrayCoordinates[1], 10)
+        }
+        return this.coordinates = coordinates;
     }
 
     createPlayers () {
