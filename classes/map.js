@@ -242,7 +242,7 @@ class Map {
     this.area[coordinates.x][coordinates.y].entityOnTheCase.push(player);
 
     // Update map cells 
-    this.updateArea(this.area, this.Players, this.game.playerTurn);
+    this.updateArea(this.area, this.Players, this.game.playerTurn); //TODO passer directement le joueur déjà récup igne 228
   }
 
   updateArea (area, Players, playerTurn){
