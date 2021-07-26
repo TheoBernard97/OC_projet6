@@ -176,7 +176,7 @@ class Map {
           cell.setAttribute("class", "reachable-cell");
         }
         else {
-          i = player.mobility + 1;
+          break;
         }
       }
     }
@@ -190,7 +190,7 @@ class Map {
           cell.setAttribute("class", "reachable-cell");
         }
         else {
-          i = player.mobility + 1;
+          break;
         }
       }
     }
@@ -204,7 +204,7 @@ class Map {
           cell.setAttribute("class", "reachable-cell");
         }
         else {
-          i = player.mobility + 1;
+          break;
         }
       }
     }
@@ -218,7 +218,7 @@ class Map {
           cell.setAttribute("class", "reachable-cell");
         }
         else {
-          i = player.mobility + 1;
+          break;
         }
       }
     }
@@ -264,7 +264,7 @@ class Map {
           cell.classList.remove("reachable-cell");
         }
         else {
-          i = player.mobility + 1;
+          break;
         }
       }
     }
@@ -278,7 +278,7 @@ class Map {
           cell.classList.remove("reachable-cell");
         }
         else {
-          i = player.mobility + 1;
+          break;
         }
       }
     }
@@ -292,7 +292,7 @@ class Map {
           cell.classList.remove("reachable-cell");
         }
         else {
-          i = player.mobility + 1;
+          break;
         }
       }
     }
@@ -306,7 +306,7 @@ class Map {
           cell.classList.remove("reachable-cell");
         }
         else {
-          i = player.mobility + 1;
+          break;
         }
       }
     }
