@@ -331,7 +331,10 @@ class Map {
         
         // Remove class when the cell is accessible 
         if (area[index][i].isAccessible){
-          div.className = "";
+          div.classList.remove("reachable-cell");
+          if (area[index][i].entityOnTheCase == 0){
+            div.className = "";
+          }
         }
       }
     });
