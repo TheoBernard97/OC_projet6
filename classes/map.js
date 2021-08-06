@@ -80,6 +80,8 @@ class Map {
     }
   }
 
+  // TODO : Changer isAccessible en methode qui check ce que contient la cellule
+
   addPlayers(area, players) {
     for (let i = 0; i < players.length; i++) {
       const randomX = Math.floor(Math.random() * area.length); 
@@ -230,9 +232,7 @@ class Map {
 
     // Remove player from oldCoordinates
     this.area[oldCoordinates.x][oldCoordinates.y].entityOnTheCase.pop();
-
-    // Update map cells 
-    // this.updateArea(this.area, this.Players, this.game.playerTurn)
+    this.area[oldCoordinates.x][oldCoordinates.y].isAccessible = true;
 
     // Set player newCoordinates
     player.setCoordinates(newCoordinates);
@@ -240,17 +240,16 @@ class Map {
     
     // Add player to newCoordinates
     this.area[coordinates.x][coordinates.y].entityOnTheCase.push(player);
+    this.area[coordinates.x][coordinates.y].isAccessible = false;
 
     // Update map cells 
-    this.updateArea(this.area, this.Players, this.game.playerTurn); //TODO passer directement le joueur déjà récup igne 228
+    this.updateArea(this.area, this.Players, player);
   }
 
-  updateArea (area, Players, playerTurn){
+  updateArea (area, Players, player){
     // Remove old data from the previous concerned cells
 
     const divs = document.querySelectorAll(".map>div");
-
-    const player = Players[playerTurn - 1];
 
     const xPos = player.coordinates.x
     const yPos = player.coordinates.y
@@ -329,9 +328,9 @@ class Map {
           const cssID = "weapon" + area[index][i].entityOnTheCase.find((entity) => entity instanceof Weapon).weaponId;
           div.setAttribute("id", cssID);
         }
-
-        // Remove clas when there is nothing on the cell
-        if (area[index][i].entityOnTheCase.length == 0){
+        
+        // Remove class when the cell is accessible 
+        if (area[index][i].isAccessible){
           div.className = "";
         }
       }
