@@ -8,6 +8,7 @@ class Player {
         this.power = 10;
         this.health = 100;
         this.mobility = 3;
+        this.weapon = null;
     }
 
     getHealth () {
@@ -29,6 +30,14 @@ class Player {
             y : parseInt(arrayCoordinates[1], 10)
         }
         return this.coordinates = coordinates;
+    }
+
+    getWeapon(){
+        return this.weapon;
+    }
+
+    setWeapon(newWeapon){
+        return this.weapon = newWeapon;
     }
 
     createPlayers () {
