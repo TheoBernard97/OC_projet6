@@ -340,6 +340,15 @@ class Map {
       }
     });
   }
+
+  grabWeapon(area, Players, player, newWeapon) {
+    const currentPlayer = Players[player];
+    let playerWeapon = currentPlayer.getWeapon();
+    currentPlayer.setWeapon(newWeapon);
+    if (playerWeapon){
+      return playerWeapon;
+    }
+  }
 }
 
 export default Map;
