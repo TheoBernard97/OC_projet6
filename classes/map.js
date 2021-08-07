@@ -320,11 +320,12 @@ class Map {
         // Add class when there is a player on the cell
         if (area[index][i].entityOnTheCase.some((entity) => entity instanceof Player)){
           const cssClass = "player" + area[index][i].entityOnTheCase.find((entity) => entity instanceof Player).id;
+          div.removeAttribute('id');
           div.setAttribute("class", cssClass);
         }
 
         // Add class when there is a weapon on the cell
-        if (area[index][i].entityOnTheCase.some((entity) => entity instanceof Weapon)){
+        else if (area[index][i].entityOnTheCase.some((entity) => entity instanceof Weapon)){
           const cssID = "weapon" + area[index][i].entityOnTheCase.find((entity) => entity instanceof Weapon).weaponId;
           div.setAttribute("id", cssID);
         }
