@@ -19,19 +19,12 @@ class Map {
   }
 
   init = () => {
-    // console.log("1. Create area");
     this.createArea(this.size, this.area);
-    // console.log("2. Add rocks");
     this.addRocks(this.area, this.rocks);
-    // console.log("3. Create weapons");
     this.Swords = this.weapon.createWeapons(Weapons);
-    // console.log("4. Add weapons");
     this.addWeapons(this.area, this.Swords);
-    // console.log("5. Create players");
     this.Players = this.player.createPlayers();
-    // console.log("6. Add players");
     this.addPlayers(this.area, this.Players);
-    // console.log("7. Display area");
     this.displayArea(this.area);
   }
 
@@ -243,6 +236,14 @@ class Map {
     // Add player to newCoordinates
     this.area[coordinates.x][coordinates.y].entityOnTheCase.push(player);
     this.area[coordinates.x][coordinates.y].isAccessible = false;
+
+    // Trigger the battle phase if the players are close
+    const playerIsClose = this.checkIfPlayerIsClose(this.area, coordinates.x, coordinates.y);
+    if (playerIsClose) {
+      console.log("Battle Phase");
+      const map = document.querySelector(".map");
+      map.style.display = "none";
+    }
 
     // Update map cells 
     this.updateArea(this.area, this.Players, player);
