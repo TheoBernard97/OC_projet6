@@ -237,6 +237,8 @@ class Map {
     // Set player newCoordinates
     player.setCoordinates(newCoordinates);
     const coordinates = player.getCoordinates();
+
+    this.checkIfPlayerWalksOnAWeapon(player, oldCoordinates, coordinates);
     
     // Add player to newCoordinates
     this.area[coordinates.x][coordinates.y].entityOnTheCase.push(player);
@@ -244,6 +246,83 @@ class Map {
 
     // Update map cells 
     this.updateArea(this.area, this.Players, player);
+  }
+
+  checkIfPlayerWalksOnAWeapon (player, oldCoordinates, newCoordinates) {
+    let direction = null;
+    let distance = null;
+
+    (function () {
+      if (oldCoordinates.x - newCoordinates.x > 0){
+        direction = "west";
+        distance = Math.abs(oldCoordinates.x - newCoordinates.x);
+      }
+      else if (oldCoordinates.x - newCoordinates.x < 0){
+        direction = "east";
+        distance = Math.abs(oldCoordinates.x - newCoordinates.x);
+      }
+      else if (oldCoordinates.y - newCoordinates.y > 0){
+        direction = "north";
+        distance = Math.abs(oldCoordinates.y - newCoordinates.y);
+      }
+      else if (oldCoordinates.y - newCoordinates.y < 0){
+        direction = "south";
+        distance = Math.abs(oldCoordinates.y - newCoordinates.y);
+      }
+    })();
+
+    if (direction == "west"){
+      for(let i = 1; i <= distance; i++){
+        if (this.area[oldCoordinates.x - i][oldCoordinates.y].entityOnTheCase.find((entity) => entity instanceof Weapon)){
+          const newWeapon = this.area[oldCoordinates.x - i][oldCoordinates.y].entityOnTheCase.find((entity) => entity instanceof Weapon);
+          const oldWeapon = this.grabWeapon(player, newWeapon);
+          this.area[oldCoordinates.x - i][oldCoordinates.y].entityOnTheCase.pop();
+          this.area[oldCoordinates.x - i][oldCoordinates.y].entityOnTheCase.push(oldWeapon);
+          if(oldWeapon){
+            console.log("Throw weapon", oldWeapon.weaponId);
+          }
+        }
+      }
+    }
+    else if (direction == "east"){
+      for(let i = 1; i <= distance; i++){
+        if (this.area[oldCoordinates.x + i][oldCoordinates.y].entityOnTheCase.find((entity) => entity instanceof Weapon)){
+          const newWeapon = this.area[oldCoordinates.x + i][oldCoordinates.y].entityOnTheCase.find((entity) => entity instanceof Weapon);
+          const oldWeapon = this.grabWeapon(player,newWeapon);
+          this.area[oldCoordinates.x + i][oldCoordinates.y].entityOnTheCase.pop();
+          this.area[oldCoordinates.x + i][oldCoordinates.y].entityOnTheCase.push(oldWeapon);
+          if(oldWeapon){
+            console.log("Throw weapon", oldWeapon.weaponId);
+          }
+        }
+      }
+    }
+    else if (direction == "north"){
+      for(let i = 1; i <= distance; i++){
+        if (this.area[oldCoordinates.x][oldCoordinates.y - i].entityOnTheCase.find((entity) => entity instanceof Weapon)){
+          const newWeapon = this.area[oldCoordinates.x][oldCoordinates.y - i].entityOnTheCase.find((entity) => entity instanceof Weapon);
+          const oldWeapon = this.grabWeapon(player,newWeapon);
+          this.area[oldCoordinates.x][oldCoordinates.y - i].entityOnTheCase.pop();
+          this.area[oldCoordinates.x][oldCoordinates.y - i].entityOnTheCase.push(oldWeapon);
+          if(oldWeapon){
+            console.log("Throw weapon", oldWeapon.weaponId);
+          }
+        }
+      }
+    }
+    else if (direction == "south"){
+      for(let i = 1; i <= distance; i++){
+        if (this.area[oldCoordinates.x][oldCoordinates.y + i].entityOnTheCase.find((entity) => entity instanceof Weapon)){
+          const newWeapon = this.area[oldCoordinates.x][oldCoordinates.y + i].entityOnTheCase.find((entity) => entity instanceof Weapon);
+          const oldWeapon = this.grabWeapon(player,newWeapon);
+          this.area[oldCoordinates.x][oldCoordinates.y + i].entityOnTheCase.pop();
+          this.area[oldCoordinates.x][oldCoordinates.y + i].entityOnTheCase.push(oldWeapon);
+          if(oldWeapon){
+            console.log("Throw weapon", oldWeapon.weaponId);
+          }
+        }
+      }
+    }
   }
 
   updateArea (area, Players, player){
@@ -341,10 +420,10 @@ class Map {
     });
   }
 
-  grabWeapon(area, Players, player, newWeapon) {
-    const currentPlayer = Players[player];
-    let playerWeapon = currentPlayer.getWeapon();
-    currentPlayer.setWeapon(newWeapon);
+  grabWeapon(player, newWeapon) {
+    console.log("GrabWeapon", newWeapon.weaponId);
+    let playerWeapon = player.getWeapon();
+    player.setWeapon(newWeapon);
     if (playerWeapon){
       return playerWeapon;
     }
