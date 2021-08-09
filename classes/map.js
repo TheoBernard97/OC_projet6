@@ -325,6 +325,15 @@ class Map {
       }
     }
   }
+  
+  grabWeapon(player, newWeapon) {
+    console.log("GrabWeapon", newWeapon.weaponId);
+    let playerWeapon = player.getWeapon();
+    player.setWeapon(newWeapon);
+    if (playerWeapon){
+      return playerWeapon;
+    }
+  }
 
   updateArea (area, Players, player){
     // Remove old data from the previous concerned cells
@@ -419,15 +428,6 @@ class Map {
         }
       }
     });
-  }
-
-  grabWeapon(player, newWeapon) {
-    console.log("GrabWeapon", newWeapon.weaponId);
-    let playerWeapon = player.getWeapon();
-    player.setWeapon(newWeapon);
-    if (playerWeapon){
-      return playerWeapon;
-    }
   }
 }
 
