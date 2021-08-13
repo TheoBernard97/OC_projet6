@@ -7,3 +7,5 @@ start.addEventListener("click", () => {
     start.style.display = "none";
     game.init();
 });
+
+window["game"]=game;
