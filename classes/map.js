@@ -423,6 +423,7 @@ class Map {
         if (area[index][i].isAccessible){
           div.classList.remove("reachable-cell");
           if (area[index][i].entityOnTheCase == 0){
+            div.removeAttribute('id');
             div.className = "";
           }
         }
