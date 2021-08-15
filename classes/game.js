@@ -6,7 +6,7 @@ import Player from "./player.js";
 class Game {
     constructor() {
         const mapSize = 10;
-        const numberOfRocks = 15;
+        const numberOfRocks = 20;
         // 4 Weapons
         // 2 Players
         this.currentTurn = 0;
@@ -32,6 +32,7 @@ class Game {
 
     researchPhase () {
         this.updateTurnInfo();
+        this.updatePlayersInfo();
 
         // Show reachables cases
         this.map.displyReachableCases(this.map.area, this.map.Players[this.playerTurn - 1]);
@@ -52,14 +53,27 @@ class Game {
 
         if (this.playerTurn == 1){
             this.playerTurn = 2;
-            htmlPlayerTurn.innerHTML = this.playerTurn;
         }
         else{
             this.currentTurn++;
             this.playerTurn = 1;
-            htmlPlayerTurn.innerHTML = this.playerTurn;
-            htmlCurrentTurn.innerHTML = this.currentTurn;
         }
+    }
+    
+    updatePlayersInfo(){
+        const hpPlayer1 = document.querySelector(".hp-player1");
+        const hpPlayer2 = document.querySelector(".hp-player2");
+        const atkPlayer1 = document.querySelector(".atk-player1");
+        const atkPlayer2 = document.querySelector(".atk-player2");
+
+        hpPlayer1.innerHTML = this.map.Players[0].health;
+        hpPlayer2.innerHTML = this.map.Players[1].health;
+        atkPlayer1.innerHTML = this.map.Players[0].power;
+        atkPlayer2.innerHTML = this.map.Players[1].power;
+    }
+
+    battlePhase (){
+
     }
 }
 
