@@ -330,7 +330,11 @@ class Map {
     console.log("GrabWeapon", newWeapon.weaponId);
     let playerWeapon = player.getWeapon();
     player.setWeapon(newWeapon);
+
+    player.power = player.power + newWeapon.power;
+
     if (playerWeapon){
+      player.power = player.power - playerWeapon.power;
       return playerWeapon;
     }
   }
