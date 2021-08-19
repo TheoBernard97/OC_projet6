@@ -1,48 +1,52 @@
+<!-- @format -->
+
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sword Rush</title>
     <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
     <link rel="icon" href="assets/favicon.ico" />
-</head>
-<body>
+  </head>
+  <body>
     <div class="home">
-        <img src="/assets/Sword-rush.png" alt="">
-        <button class="start-btn">Start</button>
+      <img src="/assets/Sword-rush.png" alt="" />
+      <button class="start-btn">Start</button>
     </div>
     <div class="gameboard">
-        <div class="informations">
-            <div class="player-1">
-                <img class="player-image" src="./assets/player1.png" alt="">
-                <div class="stats-player1">
-                    <div>
-                        <p>HP : <span class="hp-player1"></span></p>
-                    </div>
-                    <div>
-                        <p>ATK : <span class="atk-player1"></span></p>
-                    </div>
-                </div>
+      <div class="informations">
+        <div class="player-1">
+          <img class="player-image" src="./assets/player1.png" alt="" />
+          <div class="stats-player1">
+            <div>
+              <p>HP : <span class="hp-player1"></span></p>
             </div>
-            <div class="player-2">
-                <img class="player-image" src="./assets/player2.png" alt="">
-                <div class="stats-player2">
-                    <div>
-                        <p>HP : <span class="hp-player2"></span></p>
-                    </div>
-                    <div>
-                        <p>ATK : <span class="atk-player2"></span></p>
-                    </div>
-                </div>
+            <div>
+              <p>ATK : <span class="atk-player1"></span></p>
             </div>
+          </div>
         </div>
-        <div class="map">
+        <div class="player-2">
+          <img class="player-image" src="./assets/player2.png" alt="" />
+          <div class="stats-player2">
+            <div>
+              <p>HP : <span class="hp-player2"></span></p>
+            </div>
+            <div>
+              <p>ATK : <span class="atk-player2"></span></p>
+            </div>
+          </div>
         </div>
+      </div>
+      <div class="map"></div>
     </div>
     <script type="module" src="/app.js"></script>
-</body>
+  </body>
 </html>

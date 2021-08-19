@@ -1,150 +1,153 @@
+/** @format */
+
 body {
-    padding: 0;
-    margin: 0;
-    text-align: center;
-    font-family: 'Roboto', sans-serif;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
 }
 
 .home {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 img {
-    margin-top: 10px;
-    height: 100px;
+  margin-top: 10px;
+  height: 100px;
 }
 
 .start-btn {
-    margin-top: 20px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    border: 1px solid black;
-    border-radius: 5px;
-    padding: 0.25rem 0.5rem;
-    display: auto;
+  margin-top: 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 0.25rem 0.5rem;
+  display: auto;
 }
 
 .gameboard {
-    display: none;
+  display: none;
 }
-
 
 /*--- PLAYER INFORMATIONS ---*/
 
 .informations {
-    display: flex;
-    flex-direction: row;
-    margin: auto;
-    width: 500px;
-    height: 75px;
-    border: solid 2px black;
-    margin: 10px auto;
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  width: 500px;
+  height: 75px;
+  border: solid 2px black;
+  margin: 10px auto;
 }
 
 .informations > * {
-    display: flex;
-    width: 50%;
+  display: flex;
+  width: 50%;
 }
 
 .player-image {
-    margin: 0;
-    padding: 12.5px;
-    height: 50px;
-    width: 50px;
+  margin: 0;
+  padding: 12.5px;
+  height: 50px;
+  width: 50px;
 }
 
-.stats-player1, .stats-player2 {
-    display: flex;
-    flex-direction: column;
-    width: 200px;
-    text-align: left;
+.stats-player1,
+.stats-player2 {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  text-align: left;
 }
 
-.stats-player1 > *, .stats-player2 > * {
-    display: flex;
+.stats-player1 > *,
+.stats-player2 > * {
+  display: flex;
 }
 
-.stats-player1 p, .stats-player2 p {
-    margin: 9px;
-    width: 50%;
+.stats-player1 p,
+.stats-player2 p {
+  margin: 9px;
+  width: 50%;
 }
-
 
 /*--- MAP ---*/
 
 .map {
-    display: flex;
-    flex-direction: row;
-    margin: auto;
-    width: 500px;
-    height: 500px;
-    outline: solid 2px black;
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  width: 500px;
+  height: 500px;
+  outline: solid 2px black;
 }
 
-.map>div {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
+.map > div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-.map>div>div {
-    height: 100%;
-    outline: solid 1px lightgrey;
+.map > div > div {
+  height: 100%;
+  outline: solid 1px lightgrey;
 }
 
 .reachable-cell {
-    background-color: grey;
-    cursor: pointer;
+  background-color: grey;
+  cursor: pointer;
 }
 
 .rock {
-    background-image: url("./assets/rock.png");
-    background-size: 90% 90%;
-    background-repeat: no-repeat;
-    background-position: center;
+  background-image: url("./assets/rock.png");
+  background-size: 90% 90%;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 #weapon1 {
-    background-image: url("./assets/sword1.png");
-    background-size: 50% 50%;
-    background-repeat: no-repeat;
-    background-position: center;
+  background-image: url("./assets/sword1.png");
+  background-size: 50% 50%;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 #weapon2 {
-    background-image: url("./assets/sword2.png");
-    background-size: 50% 50%;
-    background-repeat: no-repeat;
-    background-position: center;
+  background-image: url("./assets/sword2.png");
+  background-size: 50% 50%;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 #weapon3 {
-    background-image: url("./assets/sword3.png");
-    background-size: 50% 50%;
-    background-repeat: no-repeat;
-    background-position: center;
+  background-image: url("./assets/sword3.png");
+  background-size: 50% 50%;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 #weapon4 {
-    background-image: url("./assets/sword4.png");
-    background-size: 50% 50%;
-    background-repeat: no-repeat;
-    background-position: center;
+  background-image: url("./assets/sword4.png");
+  background-size: 50% 50%;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .player1 {
-    background-image: url("./assets/player1.png");
-    background-size: 75% 75%;
-    background-repeat: no-repeat;
-    background-position: center;
+  background-image: url("./assets/player1.png");
+  background-size: 75% 75%;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .player2 {
-    background-image: url("./assets/player2.png");
-    background-size: 75% 75%;
-    background-repeat: no-repeat;
-    background-position: center;
+  background-image: url("./assets/player2.png");
+  background-size: 75% 75%;
+  background-repeat: no-repeat;
+  background-position: center;
 }
