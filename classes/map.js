@@ -270,9 +270,9 @@ class Map {
       coordinates.y
     );
     if (playerIsClose) {
-      console.log("Battle Phase");
       const map = document.querySelector(".map");
       map.style.display = "none";
+      this.game.battlePhase();
     }
 
     // Update map cells
@@ -280,24 +280,22 @@ class Map {
   }
 
   checkIfPlayerWalksOnAWeapon(player, oldCoordinates, newCoordinates) {
-    let direction = null;
-    let distance = null;
+    let direction;
+    let distance;
 
-    (function () {
-      if (oldCoordinates.x - newCoordinates.x > 0) {
-        direction = "west";
-        distance = Math.abs(oldCoordinates.x - newCoordinates.x);
-      } else if (oldCoordinates.x - newCoordinates.x < 0) {
-        direction = "east";
-        distance = Math.abs(oldCoordinates.x - newCoordinates.x);
-      } else if (oldCoordinates.y - newCoordinates.y > 0) {
-        direction = "north";
-        distance = Math.abs(oldCoordinates.y - newCoordinates.y);
-      } else if (oldCoordinates.y - newCoordinates.y < 0) {
-        direction = "south";
-        distance = Math.abs(oldCoordinates.y - newCoordinates.y);
-      }
-    })();
+    if (oldCoordinates.x - newCoordinates.x > 0) {
+      direction = "west";
+      distance = Math.abs(oldCoordinates.x - newCoordinates.x);
+    } else if (oldCoordinates.x - newCoordinates.x < 0) {
+      direction = "east";
+      distance = Math.abs(oldCoordinates.x - newCoordinates.x);
+    } else if (oldCoordinates.y - newCoordinates.y > 0) {
+      direction = "north";
+      distance = Math.abs(oldCoordinates.y - newCoordinates.y);
+    } else if (oldCoordinates.y - newCoordinates.y < 0) {
+      direction = "south";
+      distance = Math.abs(oldCoordinates.y - newCoordinates.y);
+    }
 
     if (direction == "west") {
       for (let i = 1; i <= distance; i++) {
