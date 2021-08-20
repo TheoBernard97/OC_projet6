@@ -37,7 +37,7 @@ class Game {
     this.updatePlayersInfo();
 
     // Show reachables cases
-    this.map.displyReachableCases(
+    this.map.displayReachableCases(
       this.map.area,
       this.map.Players[this.playerTurn - 1]
     );
@@ -77,6 +77,8 @@ class Game {
   }
 
   battlePhase() {}
+
+  display;
 }
 
 export default Game;

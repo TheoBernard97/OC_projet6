@@ -188,7 +188,7 @@ class Map {
     gameboard.style.display = "block";
   }
 
-  displyReachableCases(area, player) {
+  displayReachableCases(area, player) {
     const xPos = player.coordinates.x;
     const yPos = player.coordinates.y;
 
