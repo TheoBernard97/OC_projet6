@@ -395,8 +395,6 @@ class Map {
     player.setPower(newWeapon.power);
 
     if (playerWeapon) {
-      let newPower = player.power - playerWeapon.power;
-      player.setPower(newPower);
       return playerWeapon;
     }
   }
