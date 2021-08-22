@@ -392,9 +392,7 @@ class Map {
     console.log("GrabWeapon", newWeapon.weaponId);
     let playerWeapon = player.getWeapon();
     player.setWeapon(newWeapon);
-
-    let newPower = player.power + newWeapon.power;
-    player.setPower(newPower);
+    player.setPower(newWeapon.power);
 
     if (playerWeapon) {
       let newPower = player.power - playerWeapon.power;
