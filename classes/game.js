@@ -4,6 +4,7 @@ import Map from "./map.js";
 import Weapon from "./weapon.js";
 import Weapons from "../assets/weapons.js";
 import Player from "./player.js";
+import BattleLogic from "./battleLogic.js";
 
 class Game {
   constructor() {
@@ -14,21 +15,23 @@ class Game {
     this.currentTurn = 0;
     this.playerTurn = 0;
 
+    this.BattleLogic = new BattleLogic();
     this.map = new Map(mapSize, numberOfRocks, this);
   }
 
   init() {
-    this.setupEventListener();
+    this.setupEventListeners();
     console.log("Game start");
     this.map.init();
     this.researchPhase();
   }
 
-  setupEventListener() {
+  setupEventListeners() {
     document.addEventListener("click", (event) => {
-      if (!event.target.classList.contains("reachable-cell")) return;
-      this.map.updatePlayerCoordinates(event.srcElement.attributes[0].value);
-      this.researchPhase();
+      if (event.target.classList.contains("reachable-cell")) {
+        this.map.updatePlayerCoordinates(event.srcElement.attributes[0].value);
+        this.researchPhase();
+      }
     });
   }
 
@@ -54,7 +57,6 @@ class Game {
 
   updateTurnInfo() {
     const htmlPlayerTurn = document.querySelector(".player-turn");
-    const htmlCurrentTurn = document.querySelector(".current-turn");
 
     if (this.playerTurn == 1) {
       this.playerTurn = 2;
@@ -62,6 +64,8 @@ class Game {
       this.currentTurn++;
       this.playerTurn = 1;
     }
+
+    htmlPlayerTurn.innerHTML = this.playerTurn;
   }
 
   updatePlayersInfo() {
@@ -76,9 +80,67 @@ class Game {
     atkPlayer2.innerHTML = this.map.Players[1].power;
   }
 
-  battlePhase() {}
+  battlePhase() {
+    console.log("Battle Phase");
+    this.displayActions();
+  }
 
-  display;
+  displayActions() {
+    this.updateTurnInfo();
+    const actions = document.querySelector(".battle-ui");
+    actions.style.display = "block";
+    this.setupBattleListeners();
+  }
+
+  setupBattleListeners() {
+    document.addEventListener("click", (event) => {
+      let playingPlayer;
+      let waitingPlayer;
+
+      if (this.playerTurn == 1) {
+        playingPlayer = 0;
+        waitingPlayer = 1;
+      } else {
+        playingPlayer = 1;
+        waitingPlayer = 0;
+      }
+
+      if (event.target.classList.contains("attack")) {
+        const targetIsDead = this.BattleLogic.attack(
+          this.map.Players[playingPlayer],
+          this.map.Players[waitingPlayer]
+        );
+        this.battleTurn(targetIsDead);
+      }
+      if (event.target.classList.contains("defend")) {
+        this.BattleLogic.defend(this.map.Players[playingPlayer]);
+        this.battleTurn();
+      }
+    });
+  }
+
+  battleTurn(targetIsDead) {
+    this.updatePlayersInfo();
+    this.updateTurnInfo();
+    if (targetIsDead) {
+      this.displayWinScreen();
+    }
+  }
+
+  displayWinScreen() {
+    console.log("GG");
+    const finalScreen = document.querySelector(".final");
+    const winner = document.querySelector(".winner");
+    const actions = document.querySelector(".battle-ui");
+    actions.style.display = "none";
+    finalScreen.style.display = "block";
+
+    if (this.playerTurn == 1) {
+      winner.innerHTML = "Red";
+    } else {
+      winner.innerHTML = "Blue";
+    }
+  }
 }
 
 export default Game;

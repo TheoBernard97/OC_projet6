@@ -393,10 +393,12 @@ class Map {
     let playerWeapon = player.getWeapon();
     player.setWeapon(newWeapon);
 
-    player.power = player.power + newWeapon.power;
+    let newPower = player.power + newWeapon.power;
+    player.setPower(newPower);
 
     if (playerWeapon) {
-      player.power = player.power - playerWeapon.power;
+      let newPower = player.power - playerWeapon.power;
+      player.setPower(newPower);
       return playerWeapon;
     }
   }

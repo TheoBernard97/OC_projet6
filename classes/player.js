@@ -7,8 +7,9 @@ class Player {
       x: null,
       y: null,
     };
-    this.power = 10;
     this.health = 100;
+    this.power = 10;
+    this.defense = 1;
     this.mobility = 3;
     this.weapon = null;
   }
@@ -19,6 +20,26 @@ class Player {
 
   setHealth(newHealth) {
     return (this.health = newHealth);
+  }
+
+  takeDamage(damages) {
+    return (this.health = this.health - damages);
+  }
+
+  getPower() {
+    return this.power;
+  }
+
+  setPower(newPower) {
+    return (this.power = newPower);
+  }
+
+  getDefense() {
+    return this.defense;
+  }
+
+  setDefense(newDefense) {
+    return (this.defense = newDefense);
   }
 
   getCoordinates() {
