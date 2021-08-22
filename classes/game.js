@@ -136,9 +136,9 @@ class Game {
     finalScreen.style.display = "block";
 
     if (this.playerTurn == 1) {
-      winner.innerHTML = "Red";
+      winner.innerHTML = "2";
     } else {
-      winner.innerHTML = "Blue";
+      winner.innerHTML = "1";
     }
   }
 }
