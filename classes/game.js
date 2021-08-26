@@ -57,15 +57,20 @@ class Game {
 
   updateTurnInfo() {
     const htmlPlayerTurn = document.querySelector(".player-turn");
+    const htmlPlayerColor = document.querySelector("#player-color");
+    let color;
 
     if (this.playerTurn == 1) {
       this.playerTurn = 2;
+      color = "red";
     } else {
       this.currentTurn++;
       this.playerTurn = 1;
+      color = "blue";
     }
 
     htmlPlayerTurn.innerHTML = this.playerTurn;
+    htmlPlayerColor.className = color;
   }
 
   updatePlayersInfo() {
