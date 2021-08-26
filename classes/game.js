@@ -73,11 +73,15 @@ class Game {
     const hpPlayer2 = document.querySelector(".hp-player2");
     const atkPlayer1 = document.querySelector(".atk-player1");
     const atkPlayer2 = document.querySelector(".atk-player2");
+    const defPlayer1 = document.querySelector(".def-player1");
+    const defPlayer2 = document.querySelector(".def-player2");
 
     hpPlayer1.innerHTML = this.map.Players[0].health;
     hpPlayer2.innerHTML = this.map.Players[1].health;
     atkPlayer1.innerHTML = this.map.Players[0].power;
     atkPlayer2.innerHTML = this.map.Players[1].power;
+    defPlayer1.innerHTML = this.map.Players[0].defense;
+    defPlayer2.innerHTML = this.map.Players[1].defense;
   }
 
   battlePhase() {
