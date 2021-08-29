@@ -23,7 +23,7 @@ class Player {
   }
 
   takeDamage(damages) {
-    return (this.health = this.health - damages);
+    return (this.health = Math.max(this.health - damages, 0));
   }
 
   getPower() {

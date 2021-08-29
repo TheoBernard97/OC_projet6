@@ -11,7 +11,7 @@ class BattleLogic {
     let damages = attacker.power / target.defense;
 
     if (attacker.weapon) {
-      let criticalRoll = Math.floor(Math.random() * 100) + 1;
+      let criticalRoll = Math.floor(Math.random() * 100);
 
       if (criticalRoll < attacker.weapon.criticalRate) {
         damages = damages * 2;
