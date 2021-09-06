@@ -81,10 +81,6 @@ class Game {
 
   battlePhase() {
     console.log("Battle Phase");
-    this.displayActions();
-  }
-
-  displayActions() {
     this.updateTurnInfo();
     const actions = document.querySelector(".battle-ui");
     actions.style.display = "block";
