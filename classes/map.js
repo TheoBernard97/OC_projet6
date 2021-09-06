@@ -305,7 +305,7 @@ class Map {
           const newWeapon = this.area[oldCoordinates.x - i][
             oldCoordinates.y
           ].entityOnTheCase.find((entity) => entity instanceof Weapon);
-          const oldWeapon = this.grabWeapon(player, newWeapon);
+          const oldWeapon = player.grabWeapon(newWeapon);
           this.area[oldCoordinates.x - i][
             oldCoordinates.y
           ].entityOnTheCase.pop();
@@ -327,7 +327,7 @@ class Map {
           const newWeapon = this.area[oldCoordinates.x + i][
             oldCoordinates.y
           ].entityOnTheCase.find((entity) => entity instanceof Weapon);
-          const oldWeapon = this.grabWeapon(player, newWeapon);
+          const oldWeapon = player.grabWeapon(newWeapon);
           this.area[oldCoordinates.x + i][
             oldCoordinates.y
           ].entityOnTheCase.pop();
@@ -349,7 +349,7 @@ class Map {
           const newWeapon = this.area[oldCoordinates.x][
             oldCoordinates.y - i
           ].entityOnTheCase.find((entity) => entity instanceof Weapon);
-          const oldWeapon = this.grabWeapon(player, newWeapon);
+          const oldWeapon = player.grabWeapon(newWeapon);
           this.area[oldCoordinates.x][
             oldCoordinates.y - i
           ].entityOnTheCase.pop();
@@ -371,7 +371,7 @@ class Map {
           const newWeapon = this.area[oldCoordinates.x][
             oldCoordinates.y + i
           ].entityOnTheCase.find((entity) => entity instanceof Weapon);
-          const oldWeapon = this.grabWeapon(player, newWeapon);
+          const oldWeapon = player.grabWeapon(newWeapon);
           this.area[oldCoordinates.x][
             oldCoordinates.y + i
           ].entityOnTheCase.pop();
@@ -383,17 +383,6 @@ class Map {
           }
         }
       }
-    }
-  }
-
-  grabWeapon(player, newWeapon) {
-    console.log("GrabWeapon", newWeapon.weaponId);
-    let playerWeapon = player.getWeapon();
-    player.setWeapon(newWeapon);
-    player.setPower(newWeapon.power);
-
-    if (playerWeapon) {
-      return playerWeapon;
     }
   }
 

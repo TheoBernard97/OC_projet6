@@ -63,6 +63,17 @@ class Player {
     return (this.weapon = newWeapon);
   }
 
+  grabWeapon(newWeapon) {
+    console.log("Player", this.id, "grab Sword", newWeapon.weaponId);
+    let playerWeapon = this.getWeapon();
+    this.setWeapon(newWeapon);
+    this.setPower(newWeapon.power);
+
+    if (playerWeapon) {
+      return playerWeapon;
+    }
+  }
+
   createPlayers() {
     const Players = [];
     for (let i = 0; i < 2; i++) {
