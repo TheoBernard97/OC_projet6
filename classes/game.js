@@ -39,20 +39,10 @@ class Game {
     this.updateTurnInfo();
     this.updatePlayersInfo();
 
-    // Show reachables cases
     this.map.displayReachableCases(
       this.map.area,
       this.map.Players[this.playerTurn - 1]
     );
-    // Wait for a click
-    // Move the player on each case beetween the selected one
-    // Get a weapon if the player walk on one or exchange weapons if he already have one
-    // Check if the player is close to the other player
-
-    // Update playerTurn
-    // Update currentTurn if Player2 was moving
-    // Rerun the method
-    // this.map.displayArea();
   }
 
   updateTurnInfo() {

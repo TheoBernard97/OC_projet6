@@ -73,8 +73,6 @@ class Map {
     }
   }
 
-  // TODO : Changer isAccessible en methode qui check ce que contient la cellule
-
   addPlayers(area, players) {
     for (let i = 0; i < players.length; i++) {
       const randomX = Math.floor(Math.random() * area.length);
