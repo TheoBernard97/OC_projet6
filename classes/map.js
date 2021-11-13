@@ -4,6 +4,7 @@ import Weapon from "./weapon.js";
 import Weapons from "../assets/weapons.js";
 import Player from "./player.js";
 import Game from "./game.js";
+import { playerWalksOnAWeapon } from "../functions/playerWalksOnAWeapon.js";
 
 class Map {
   constructor(mapSize, nomberOfRocks, game) {
@@ -295,95 +296,13 @@ class Map {
       distance = Math.abs(oldCoordinates.y - newCoordinates.y);
     }
 
-    if (direction == "west") {
-      for (let i = 1; i <= distance; i++) {
-        if (
-          this.area[oldCoordinates.x - i][
-            oldCoordinates.y
-          ].entityOnTheCase.find((entity) => entity instanceof Weapon)
-        ) {
-          const newWeapon = this.area[oldCoordinates.x - i][
-            oldCoordinates.y
-          ].entityOnTheCase.find((entity) => entity instanceof Weapon);
-          const oldWeapon = player.grabWeapon(newWeapon);
-          this.area[oldCoordinates.x - i][
-            oldCoordinates.y
-          ].entityOnTheCase.pop();
-          this.area[oldCoordinates.x - i][
-            oldCoordinates.y
-          ].entityOnTheCase.push(oldWeapon);
-          if (oldWeapon) {
-            console.log("Throw weapon", oldWeapon.weaponId);
-          }
-        }
-      }
-    } else if (direction == "east") {
-      for (let i = 1; i <= distance; i++) {
-        if (
-          this.area[oldCoordinates.x + i][
-            oldCoordinates.y
-          ].entityOnTheCase.find((entity) => entity instanceof Weapon)
-        ) {
-          const newWeapon = this.area[oldCoordinates.x + i][
-            oldCoordinates.y
-          ].entityOnTheCase.find((entity) => entity instanceof Weapon);
-          const oldWeapon = player.grabWeapon(newWeapon);
-          this.area[oldCoordinates.x + i][
-            oldCoordinates.y
-          ].entityOnTheCase.pop();
-          this.area[oldCoordinates.x + i][
-            oldCoordinates.y
-          ].entityOnTheCase.push(oldWeapon);
-          if (oldWeapon) {
-            console.log("Throw weapon", oldWeapon.weaponId);
-          }
-        }
-      }
-    } else if (direction == "north") {
-      for (let i = 1; i <= distance; i++) {
-        if (
-          this.area[oldCoordinates.x][
-            oldCoordinates.y - i
-          ].entityOnTheCase.find((entity) => entity instanceof Weapon)
-        ) {
-          const newWeapon = this.area[oldCoordinates.x][
-            oldCoordinates.y - i
-          ].entityOnTheCase.find((entity) => entity instanceof Weapon);
-          const oldWeapon = player.grabWeapon(newWeapon);
-          this.area[oldCoordinates.x][
-            oldCoordinates.y - i
-          ].entityOnTheCase.pop();
-          this.area[oldCoordinates.x][
-            oldCoordinates.y - i
-          ].entityOnTheCase.push(oldWeapon);
-          if (oldWeapon) {
-            console.log("Throw weapon", oldWeapon.weaponId);
-          }
-        }
-      }
-    } else if (direction == "south") {
-      for (let i = 1; i <= distance; i++) {
-        if (
-          this.area[oldCoordinates.x][
-            oldCoordinates.y + i
-          ].entityOnTheCase.find((entity) => entity instanceof Weapon)
-        ) {
-          const newWeapon = this.area[oldCoordinates.x][
-            oldCoordinates.y + i
-          ].entityOnTheCase.find((entity) => entity instanceof Weapon);
-          const oldWeapon = player.grabWeapon(newWeapon);
-          this.area[oldCoordinates.x][
-            oldCoordinates.y + i
-          ].entityOnTheCase.pop();
-          this.area[oldCoordinates.x][
-            oldCoordinates.y + i
-          ].entityOnTheCase.push(oldWeapon);
-          if (oldWeapon) {
-            console.log("Throw weapon", oldWeapon.weaponId);
-          }
-        }
-      }
-    }
+    playerWalksOnAWeapon(
+      this.area,
+      player,
+      direction,
+      distance,
+      oldCoordinates
+    );
   }
 
   updateArea(area, Players, player) {
