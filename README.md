@@ -1,4 +1,8 @@
-# ✨ Sword Rush ✨ 
+# ✨ Sword Rush ✨
+
+Current live version : https://theobernard97.github.io/SwordRush/
+
+# 📝 Cahier des charges
 
 ## 🚩 Etape 1 : Génération de la carte
 
