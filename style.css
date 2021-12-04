@@ -19,6 +19,11 @@ img {
   height: 100px;
 }
 
+.lobby {
+  font-size: 1.2rem;
+  max-width: 500px;
+}
+
 .start-btn {
   margin-top: 20px;
   font-size: 1.2rem;
@@ -27,6 +32,10 @@ img {
   border-radius: 5px;
   padding: 0.25rem 0.5rem;
   display: auto;
+}
+
+.rules {
+  margin-top: 25px;
 }
 
 .gameboard {

@@ -4,8 +4,9 @@ import Game from "./classes/game.js";
 let game = new Game();
 
 const start = $(".start-btn");
+const lobby = $(".lobby");
 start.click(() => {
-  start.hide();
+  lobby.hide();
   game.init();
 });
 
